@@ -7,6 +7,12 @@ router.get('/', (req, res, next) => {
   });
 });
 
+router.postt('/', (req, res, next) => {
+  res.status(201).json({
+    message: 'Order was created'
+  });
+});
+
 
 
 module.exports = router;
