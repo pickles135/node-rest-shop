@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
+//Hande incoming GET requests tor /orders
 router.get('/', (req, res, next) => {
   res.status(200).json({
     message: 'Orders were fetched'
