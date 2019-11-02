@@ -7,7 +7,14 @@ const mongoose = require('mongoose');
 const productRoutes = require('./api/routes/products');
 const orderRoutes = require('./api/routes/orders');
 
-mongoose.connect('mongodb+srv://node-shop:' + process.env.MONGO_ATLAS_PW + '@node-rest-shop-tfovr.mongodb.net/test?retryWrites=true&w=majority');
+mongoose.connect(
+  'mongodb+srv://node-shop:' +
+   process.env.MONGO_ATLAS_PW + 
+   '@node-rest-shop-tfovr.mongodb.net/test?retryWrites=true&w=majority',
+  {
+    useMongoClient: true
+  }
+);
 
 app.use(morgan('dev'));
 app.use(bodyParser.urlencoded({extended: false}));
