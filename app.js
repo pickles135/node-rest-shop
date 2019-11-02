@@ -12,7 +12,8 @@ mongoose.connect(
    process.env.MONGO_ATLAS_PW + 
    '@node-rest-shop-tfovr.mongodb.net/test?retryWrites=true&w=majority',
   {
-    useMongoClient: true
+    useNewUrlParser: true,
+    useUnifiedTopology: true
   }
 );
 
