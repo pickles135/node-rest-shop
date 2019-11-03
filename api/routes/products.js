@@ -18,11 +18,16 @@ router.post('/', (req, res, next) => {
   });
   product.save().then(result => {
     console.log(result);
+    res.status(201).json({
+      message: "Handling POST request to /products",
+      createdProduct: result
   })
-  .catch(err => console.log(err));
-  res.status(201).json({
-    message: "Handling POST request to /products",
-    createdProduct: product
+  .catch(err => {
+    console.log(err);
+    res.status(500).json({
+      error: err
+    });
+  });
   });
 });
 
