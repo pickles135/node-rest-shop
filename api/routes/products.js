@@ -31,7 +31,7 @@ router.get('/:productID', (req, res, next) => {
   Product.findById(id)
   .exec()
   .then(doc => {
-    console.log(doc);
+    console.log('From database ', doc);
     res.status(200).json(doc);
   })
   .catch(err => {
