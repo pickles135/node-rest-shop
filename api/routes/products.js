@@ -5,8 +5,17 @@ const mongoose = require('mongoose');
 const Product = require('../models/product');
 
 router.get('/', (req, res, next) => {
-  res.status(200).json({
-    message: 'Handling GET request to /products'
+  Product.find()
+  .exec()
+  .then(docs => {
+    console.log(docs);
+    res.status(200)(docs);
+  })
+  .catch(err => {
+    console.log(err);
+    res.status(500).json({
+      error : err
+    });
   });
 });
 
