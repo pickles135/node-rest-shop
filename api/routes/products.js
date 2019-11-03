@@ -51,7 +51,6 @@ router.get('/:productID', (req, res, next) => {
     } else {
       res.status(404).json({message: "No valid entry found for provided ID"});
     }
-    res.status(200).json(doc);
   })
   .catch(err => {
     console.log(err);
@@ -65,19 +64,35 @@ router.patch('/:productID', (req, res, next) => {
   });
 });
 
-router.delete('/:productID', (req, res, next) => {
+// router.delete('/:productID', (req, res, next) => {
+//   const id = req.params.productId;
+//   Product.remove({_id: id})
+//   .exec()
+//   .then(result => {
+//     res.status(200).json(result);
+//   })
+//   .catch(err => {
+//     console.log(err);
+//     res.status(500).json({
+//       error: err
+//     });
+//   });
+// });
+
+router.delete("/:productId", (req, res, next) => {
   const id = req.params.productId;
-  Product.remove({_id: id})
-  .exec()
-  .then(result => {
-    res.status(200).json(result);
-  })
-  .catch(err => {
-    console.log(err);
-    res.status(500).json({
-      error: err
+  Product.remove({ _id: id })
+    .exec()
+    .then(result => {
+      res.status(200).json(result);
+    })
+    .catch(err => {
+      console.log(err);
+      res.status(500).json({
+        error: err
+      });
     });
-  });
 });
+
 
 module.exports = router;
