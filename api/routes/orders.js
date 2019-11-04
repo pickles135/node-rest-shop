@@ -7,9 +7,17 @@ const Order = require('../models/order');
 //Hande incoming GET requests tor /orders
 router.get('/', (req, res, next) => {
   Order.find()
+    .select('product quantity _id')
     .exec()
     .then(docs => {
-      res.status(200).json(docs);
+      res.status(200).json({
+          count: docs.length,
+          orders: docs, 
+          request: {
+            type: 'GET',
+            url: 'http://localhost:3000/orders' + doc
+          }
+      });
     })
     .catch(err => {
       res.status(500).json({
