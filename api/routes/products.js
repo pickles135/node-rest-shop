@@ -14,7 +14,7 @@ router.get('/', (req, res, next) => {
       products: docs
     };
     // if (docs.length >=0) {
-      res.status(200).json(docs);
+      res.status(200).json(response);
     // } else {
     //   res.status(404).json({
     //     message: 'No entires found'
