@@ -11,7 +11,19 @@ router.get('/', (req, res, next) => {
   .then(docs => {
     const response = {
       count: docs.length,
-      products: docs
+      products: docs.map(doc => {
+        return {
+          name: doc.name,
+          price: doc.price,
+          _id: doc._id,
+          url: {
+            request: {
+              type: 'GET',
+              url: 'http://localhost:3000/products/' + doc._id
+            }
+          }
+        }
+      })
     };
     // if (docs.length >=0) {
       res.status(200).json(response);
