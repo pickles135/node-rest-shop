@@ -1,5 +1,8 @@
 const express = require('express');
 const router = express.Router();
+const mongoose = require('mongoose');
+
+const Order = require('../models/order');
 
 //Hande incoming GET requests tor /orders
 router.get('/', (req, res, next) => {
