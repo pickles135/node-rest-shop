@@ -12,11 +12,17 @@ router.get('/', (req, res, next) => {
     .then(docs => {
       res.status(200).json({
           count: docs.length,
-          orders: docs, 
-          request: {
-            type: 'GET',
-            url: 'http://localhost:3000/orders' + doc
-          }
+          orders: docs.map(doc => {
+              return {
+                _id: doc._id,
+                product: doc.product,
+                quantity: doc.quantity,
+                request: {
+                    type: 'GET',
+                    url: 'http://localhost:3000/orders' + doc._id
+                }
+              }
+          })
       });
     })
     .catch(err => {
