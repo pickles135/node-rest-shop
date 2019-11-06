@@ -12,6 +12,8 @@ const storage = multer.diskStorage({
     } 
 });
 
+const upload = multer({storage: storage});
+
 const Product = require("../models/product");
 
 router.get("/", (req, res, next) => {
