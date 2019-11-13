@@ -6,7 +6,7 @@ const checkAuth = require('../middleware/check-auth');
 const Order = require("../models/order");
 const Product = require("../models/product");
 
-import OrdersControllers from '../controllers/orders';
+const OrdersControllers = require('../controllers/orders');
 
 // Handle incoming GET requests to /orders
 router.get("/", OrdersControllers.orders_get_all);
