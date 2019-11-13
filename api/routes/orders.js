@@ -9,7 +9,7 @@ const Product = require("../models/product");
 const OrdersControllers = require('../controllers/orders');
 
 // Handle incoming GET requests to /orders
-router.get("/", OrdersControllers.orders_get_all);
+router.get("/", checkAuth, OrdersControllers.orders_get_all);
 
 router.post("/", checkAuth, (req, res, next) => {
   Product.findById(req.body.productId)
